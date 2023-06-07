@@ -1,0 +1,49 @@
+version: '3.7'
+services:
+  prometheus:
+    image: bcr-de01.inside.bosch.cloud/metrics2prometheus/prometheus:v2.35.0
+    user: "109396:109396"
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - ./prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--log.level=debug'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    links:
+      - metrics2prometheus
+    networks:
+      - prometheusnet
+    restart: always
+
+  alertmanager:
+    image: bcr-de01.inside.bosch.cloud/metrics2prometheus/alertmanager:v0.24.0
+    user: "109396:109396"
+    volumes:
+      - ./alertmanager:/etc/alertmanager
+      - ./alertmanager_data:/alertmanager
+    networks:
+      - prometheusnet
+    command:
+      - '--config.file=/etc/alertmanager/config.yaml'
+      - '--storage.path=/alertmanager'
+    ports:
+      - 9093:9093
+    restart: always
+
+  metrics2prometheus:
+    image: bcr-de01.inside.bosch.cloud/metrics2prometheus/metrics2prometheus:v0.4
+    user: "109396:109396"
+    env_file: .env
+    networks:
+      - prometheusnet
+    restart: always
+  
+networks:
+  prometheusnet:
+    driver: bridge
+

@@ -1,0 +1,6 @@
+# Please consider placing your specialized ignores into seperate .gitignore files in the relevant subfolder
+# This file should only be used for globally accepted ignores
+
+# PRQA temporary files
+*.stamp
+logs

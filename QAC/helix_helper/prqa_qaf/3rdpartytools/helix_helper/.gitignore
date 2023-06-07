@@ -1,0 +1,6 @@
+__pycache__
+.vscode
+test_src/build_commands
+test_src/helix1.5_project
+test_src/helix2019.2_project
+

@@ -1,0 +1,37 @@
+{
+    "jenkins_PR": {
+        "PRQA_PROJECT_PATH": "qacpp_PR/Helix_helper",
+        "BUILD_LOG": "generatedFiles/Radar_C2_ASIL_B/compile_commands.json",
+        "PRQA_SYNC_TYPE": "JSON",
+        "JSON_FILTER": "\\.cpp$",
+        "RCF_FILE": "vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/config/rcf/helix2019.2_1.5.1_ccda_cpp.rcf",
+        "ACF_FILE": "vwmqb37w_apl/tools/scripts/helix_helper/qaf_config/helix2019.2_1.5.1_ccda_cpp_local_no_ncf.acf",
+        "VCF_FILE": "vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/config/vcf/prqa_ccda_config_git_1.0.xml",
+        "NCF_FILE": "",
+        "USER_MESSAGES": "vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/user_library/user_messages/helix2019.2_1.5.1_messages_cpp_4helper.xml",
+        "CUSTOM_HELP_PATH": "",
+        "COMPILER_LIST": ["vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/config/cct/GHS_201815_standalone_TC1V162_C++11.cct"],
+        "ANALYZE_PARAMS": "--file-based-analysis --force-complete --show-timings",
+        "PRQA_SYNC_FILTERS": [],
+        "PRQA_MODULES": ["qacpp-4.5.0"],
+        "PRQA_ANALYSIS_FILTERS": []
+    },
+    "jenkins_ALL": {
+        "PRQA_PROJECT_PATH": "qacpp_ALL",
+        "BUILD_LOG": "generatedFiles/Radar_C2_ASIL_B/compile_commands.json",
+        "PRQA_SYNC_TYPE": "JSON",
+        "JSON_FILTER": "\\.cpp$",
+        "BUILD_COMMAND": "vwmqb37w_apl\\tools\\jenkins\\jenkins_build_variant.bat C2_ASIL_B dontRunMake",
+        "RCF_FILE": "vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/config/rcf/helix2019.2_1.5.1_ccda_cpp.rcf",
+        "ACF_FILE": "vwmqb37w_apl/tools/scripts/helix_helper/qaf_config/helix2019.2_1.5.1_ccda_cpp_local_no_ncf.acf",
+        "VCF_FILE": "vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/config/vcf/prqa_ccda_config_git_1.0.xml",
+        "NCF_FILE": "",
+        "USER_MESSAGES": "vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/user_library/user_messages/helix2019.2_1.5.1_messages_cpp_4helper.xml",
+        "CUSTOM_HELP_PATH": "",
+        "COMPILER_LIST": ["vwmqb37w_apl/tools/scripts/helix_helper/prqa_qaf/config/cct/GHS_201815_standalone_TC1V162_C++11.cct"],
+        "ANALYZE_PARAMS": "--file-based-analysis --force-complete --show-timings",
+        "PRQA_SYNC_FILTERS": [],
+        "PRQA_MODULES": ["qacpp-4.5.0"],
+        "PRQA_ANALYSIS_FILTERS": []
+    }
+}

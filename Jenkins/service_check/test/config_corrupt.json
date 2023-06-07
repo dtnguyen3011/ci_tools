@@ -1,0 +1,41 @@
+{
+    "meta": {
+        "rootMeta": true
+    },
+    "pipelines": 
+        {
+            "nodes": [
+                {
+                    "meta": {
+                        "nodeMeta": true
+                    },
+                    "stages": [
+                        {
+                            "meta": {
+                                "k1": "v1",
+                                "k2": "v2",
+                                "k3": [
+                                    "test1",
+                                    "test2"
+                                ]
+                            },
+                            "name": "Stage B1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "post": [
+        {
+            "stages": [
+                {
+                    "meta": {
+                        "testMeta": true
+                    },
+                    "name": "Archive Logs"
+                }
+            ]
+        }
+    ]
+}

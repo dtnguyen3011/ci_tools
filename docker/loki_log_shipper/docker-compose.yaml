@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  loki-shipper:
+    image: bcr-de01.inside.bosch.cloud/radar_gen5/loki-shipper:$LS_VERSION
+    env_file: .env
+    dns:
+      - 10.42.14.61
+    ports:
+      - 0.0.0.0:5000:5000
+    restart: always

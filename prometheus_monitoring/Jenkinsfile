@@ -1,0 +1,87 @@
+pipeline {
+    agent {
+        label 'buildslaves_abts55144'
+    }
+    environment {
+        CREDS          = credentials('RAX1LR_PASSWORD')
+        CREDS_LUCX     = credentials('LUCXPASSWORD')
+    }
+    stages {
+        stage('Preparing environment') {
+            steps {
+                script {
+                    sh "sudo chown -R rax1lr /opt/prometheus/" // so jenkins can operate in the folder
+                    if (fileExists("/opt/prometheus/prometheus_monitoring/prometheus_alerting_config/docker-compose.yaml")) {
+                        sh("""
+                            cd /opt/prometheus/prometheus_monitoring/prometheus_alerting_config/
+                            docker-compose down
+                        """)
+                    }
+                    //importing fresh stuff
+                    dir("${WORKSPACE}/") {
+                        checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: "${params.branch}"]],
+                    userRemoteConfigs: [[credentialsId: 'LUCXPASSWORD',
+                                        url: 'https://sourcecode01.de.bosch.com/scm/radtoolcust/ci_tools.git']]
+                    ])
+                     sh "sudo cp -r prometheus_monitoring/ /opt/prometheus/" // cp overwrites by default. get new stuff in
+                    }
+                }
+            }
+        }
+
+        stage('build image') {
+            steps {
+                sh(script: """
+                    docker run --rm --privileged --name docker-builder -v /var/run/docker.sock:/var/run/docker.sock \
+                    -v '/opt/prometheus/prometheus_monitoring/metrics2prometheus:/app' bcr-de01.inside.bosch.cloud/radar_gen5/python-builder:0.1 \
+                    python3 /builder/build.py -u $CREDS_LUCX_USR -p $CREDS_LUCX_PSW -n metrics2prometheus --push
+                    sudo rm -f /opt/prometheus/prometheus_monitoring/metrics2prometheus/pip.conf
+                """) //pip.conf.example
+            }
+        }
+
+        stage('Test prometheus config') {
+            steps {
+                script {
+                    // docker temp container on port 9095 to check config integrity
+                    sh("""
+                        docker run -d --rm --privileged --name prometheus_test -p 9095:9090 \
+                        -v '/opt/prometheus/prometheus_monitoring/prometheus_alerting_config/prometheus/:/etc/prometheus/' \
+                        -v /var/run/docker.sock:/var/run/docker.sock \
+                        bcr-de01.inside.bosch.cloud/radar_gen5/prometheus:v2.35.0
+                    """)
+                    // if the config is off the container might immediately exit with an error. config check fails, cannot execute in stopped container.
+                    def config_check = sh returnStdout:true, script: 'docker exec prometheus_test promtool check config /etc/prometheus/prometheus.yml'
+                    echo "${config_check}"
+
+                    // cleanup
+                    sh('''
+                        docker stop prometheus_test
+                    ''')
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    def version = sh(script: "cat /opt/prometheus/prometheus_monitoring/metrics2prometheus/version", returnStdout: true)
+                    sh("""
+                    cd /opt/prometheus/prometheus_monitoring/prometheus_alerting_config/
+                    sudo sed -i 's/LS_VERSION=.*/LS_VERSION=v${version}/g' .env
+                    sudo sed -i 's/INFLUXDB_USERNAME=.*/INFLUXDB_USERNAME=$CREDS_USR/g' .env
+                    sudo sed -i 's/INFLUXDB_PASSWORD=.*/INFLUXDB_PASSWORD=$CREDS_PSW/g' .env
+                    docker-compose up -d
+                    """)
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

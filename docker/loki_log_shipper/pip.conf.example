@@ -1,0 +1,5 @@
+[global]
+# the `index-url` URL is used by `pip install`
+index-url = https://pip-user:pip-password@rb-artifactory.bosch.com/artifactory/api/pypi/python-virtual/simple
+# the `index` URL is used by `pip search`
+index = https://pip-user:pip-password@rb-artifactory.bosch.com/artifactory/api/pypi/python-virtual/

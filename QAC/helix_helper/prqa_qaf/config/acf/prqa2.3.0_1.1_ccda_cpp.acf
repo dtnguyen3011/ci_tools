@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<acf xmlversion="2.0.0">
+  <components>
+    <component version="4.2.1" target="C++" name="qacpp"/>
+    <component version="9.4.1" target="C" name="qac"/>
+    <component version="1.7.2" target="C_CPP" name="rcma"/>
+    <component version="1.5.3" target="C++" name="mcpp"/>
+  </components>
+  <component_settings>
+    <input_to version="4.2.1" target="C++" component="qacpp">
+      <option argument="+" name="-enabledataflow"/>
+      <option argument="2048" name="-maxrecursivetemplatenestingdepth "/>
+      <option argument="df::query_timeout=50" name="-prodoption "/>
+      <option argument="df::function_timeout=10000" name="-prodoption "/>
+      <option argument="df::inter=1" name="-prodoption "/>
+      <option argument="C:\Program Files (x86)" name="-quiet "/>
+      <option argument="C:\Program Files" name="-quiet "/>
+      <option argument="C:\PRQA" name="-quiet "/>
+      <option argument="C:\tools" name="-quiet "/>
+      <option argument="C:\toolbase" name="-quiet "/>
+      <option argument="C:\tcc" name="-quiet "/>
+      <option argument="D:\PRQA" name="-quiet "/>
+      <option argument="D:\tools" name="-quiet "/>
+      <option argument="STCYC>20:6040" name="-threshold "/>
+      <option argument="STPTH>1000:6041" name="-threshold "/>
+      <option argument="STPAR>9:6042" name="-threshold "/>
+      <option argument="STMIF>4:6043" name="-threshold "/>
+    </input_to>
+    <input_to version="1.7.2" target="C_CPP" component="rcma">
+      <option argument="C:\Program Files (x86)" name="-quiet "/>
+      <option argument="C:\Program Files" name="-quiet "/>
+      <option argument="C:\PRQA" name="-quiet "/>
+      <option argument="C:\tools" name="-quiet "/>
+      <option argument="C:\toolbase" name="-quiet "/>
+      <option argument="C:\tcc" name="-quiet "/>
+      <option argument="D:\PRQA" name="-quiet "/>
+      <option argument="D:\tools" name="-quiet "/>
+    </input_to>
+    <input_to version="1.5.3" target="C++" component="mcpp">
+      <option argument="C:\Program Files (x86)" name="-quiet "/>
+      <option argument="C:\Program Files" name="-quiet "/>
+      <option argument="C:\PRQA" name="-quiet "/>
+      <option argument="C:\tools" name="-quiet "/>
+      <option argument="C:\toolbase" name="-quiet "/>
+      <option argument="C:\tcc" name="-quiet "/>
+      <option argument="D:\PRQA" name="-quiet "/>
+      <option argument="D:\tools" name="-quiet "/>
+    </input_to>
+  </component_settings>
+</acf>

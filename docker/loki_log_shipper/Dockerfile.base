@@ -1,0 +1,5 @@
+FROM bcr-de01.inside.bosch.cloud/radar_gen5/python:3.9-alpine
+
+
+RUN python3 -m ensurepip && \
+    apk add --update --no-cache libexecinfo libexecinfo-dev g++ gcc python3-dev snappy-dev snappy

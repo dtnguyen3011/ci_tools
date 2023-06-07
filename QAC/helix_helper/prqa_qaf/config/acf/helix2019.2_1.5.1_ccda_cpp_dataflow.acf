@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<acf xmlversion="2.0.0">
+  <components>
+    <component version="4.5.0" target="C++" name="qacpp"/>
+    <component version="9.7.0" target="C" name="qac"/>
+  </components>
+  <component_settings>
+    <input_to version="4.5.0" target="C++" component="qacpp">
+      <option argument="s/union alignas\(AlignValue\) TAlignedTypeStorage(\s*{)/union alignas\(AlignValue\) TAlignedTypeStorage\1private: int __qacpp_dummy_var; public:/" name="-coderegex "/>
+      <option argument="s/union alignas\(AlignValue\) TAligned2TypeStorage(\s*{)/union alignas\(AlignValue\) TAligned2TypeStorage\1private: int __qacpp_dummy_var; public:/" name="-coderegex "/>
+      <option argument="s/inline float32x4_t fast_atan2/inline float32x4_t fast_atan2_neon/" name="-coderegex "/>
+      <option argument="s/inline float32x4_t fast_asin/inline float32x4_t fast_asin_neon/" name="-coderegex "/>
+      <option argument="s/inline uint32x4_t setTriangAngleOutlierBit\(const float32x4_t deltaPD2, const float32x4_t normM2, const float32x2_t params\)/inline uint32x4_t setTriangAngleOutlierBit_neon\(const float32x4_t deltaPD2, const float32x4_t normM2, const float32x2_t params\)/" name="-coderegex "/>
+      <option argument="s/inline uint32x4_t setEpipolarOutlierBit\(const float32x4_t deltaE, const float32x4_t normN2, const float32x2_t params\)/inline uint32x4_t setEpipolarOutlierBit_neon\(const float32x4_t deltaE, const float32x4_t normN2, const float32x2_t params\)/" name="-coderegex "/>
+      <option argument="s/inline uint32x4_t calculateShiftedPolarGridIdx\(const float32x4_t angles, const float32x2_t params\)/inline uint32x4_t calculateShiftedPolarGridIdx_neon\(const float32x4_t angles, const float32x2_t params\)/" name="-coderegex "/>
+      <option argument="+" name="-enabledataflow"/>
+      <option argument="2048" name="-maxrecursivetemplatenestingdepth "/>
+      <option argument="df::query_timeout=50" name="-prodoption "/>
+      <option argument="df::function_timeout=10000" name="-prodoption "/>
+      <option argument="df::inter=4" name="-prodoption "/>
+      <option argument="df::analyse_header_functions=intra" name="-prodoption "/>
+      <option argument="df::cma-" name="-prodoption "/>
+      <option argument="-" name="-metfile"/>
+      <option argument="pass_by_value::max_size=16" name="-prodoption "/>
+      <option argument="line::max_length=120" name="-prodoption "/>
+      <option argument="C:\Program Files (x86)" name="-quiet "/>
+      <option argument="C:\Program Files" name="-quiet "/>
+      <option argument="C:\PRQA" name="-quiet "/>
+      <option argument="C:\Perforce" name="-quiet "/>
+      <option argument="C:\tools" name="-quiet "/>
+      <option argument="C:\toolbase" name="-quiet "/>
+      <option argument="C:\tcc" name="-quiet "/>
+      <option argument="D:\PRQA" name="-quiet "/>
+      <option argument="D:\Perforce" name="-quiet "/>
+      <option argument="D:\tools" name="-quiet "/>
+      <option argument="STCYC>20:6040" name="-threshold "/>
+      <option argument="STPTH>1000:6041" name="-threshold "/>
+      <option argument="STPAR>9:6042" name="-threshold "/>
+      <option argument="STMIF>4:6043" name="-threshold "/>
+      <option argument="STST3>100:6044" name="-threshold "/>
+    </input_to>
+  </component_settings>
+</acf>

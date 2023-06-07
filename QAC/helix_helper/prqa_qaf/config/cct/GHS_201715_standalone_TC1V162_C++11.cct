@@ -1,0 +1,174 @@
+*{
+* "PLATFORM" : "PLATFORM_WIN32",
+* "COMPILER_HIERARCHY" : "GHS",
+* "COMPILER_NAME": "GHS for TriCore",
+* "COMPILER_VERSION": "201715",
+* "HOST": "standalone",
+* "TARGET": "TC1V162",
+* "SOURCE_LANGUAGE": "C++",
+* "COMPILER_CMD": "cctri",
+* "ADDITIONAL_INCLUDES":"DATA/GHS_201715_standalone_TC1V162_C++11/Stub",
+* "INCLUDE_LIST": [
+*   {"INCLUDE_STRUCTURE": {
+*       "INCLUDE_TYPE": "MasterScript",
+*       "INCLUDE_VALUE": "DATA/GHS_201715_standalone_TC1V162_C++11/Script/GHS_201715_standalone_TC1V162_C++11.py"
+*       }
+*   },
+*   {"INCLUDE_STRUCTURE": {
+*       "INCLUDE_TYPE": "HelperScript",
+*           "INCLUDE_VALUE": ""
+*       }
+*   }
+* ],
+* "SYNCHRONISATION" : {
+*   "INCLUDE_FLAGS":"",
+*   "DEFINE_FLAGS":"",
+*   "SETTINGS_FILE_OPTIONS":{
+*       "FLAG":"",
+*       "EXTENSION":"",
+*       "LITERAL_QUOTES":""
+*       }
+*   }
+*}
+
+-sd __GHS_VERSION_NUMBER=201715
+
+-sd _BOOL
+-sd _WCHAR_T
+-sd __ARRAY_OPERATORS
+-sd __ATTRIBUTES
+-sd __AUTO_TYPE
+-sd __CHAR_BIT=8
+-sd __Char_Is_Signed__
+-sd __EDG_RUNTIME_USES_NAMESPACES
+-sd __EDG__
+-sd __ELF
+-sd __ELF__
+-sd __Enum_Field_Is_Signed__
+-sd __FLT_SUBNORMAL_IS_ZERO__
+-sd __FREG_BIT=32
+-sd __FUNCPTR_BIT=32
+-sd __Field_Is_Unsigned__
+-sd __GHS_Inline_Memory_Functions
+-sd __GHS_Inline_String_Functions
+-sd __GHS_NOCOMMONS
+-sd __GHS_NOCOMMONS__
+-sd __GHS_OPTIMIZE__
+-sd __GHS_UNICODE__
+-sd __INT_BIT=32
+-sd __IeeeFloat
+-sd __IeeeFloat__
+-sd __Int_Is_32
+-sd __LANGUAGE_CXX
+-sd __LANGUAGE_CXX__
+-sd __LDBL_BIT=64
+-sd __LDBL_SIZE=8
+-sd __LITTLE_ENDIAN__
+-sd __LLONG_BIT=64
+-sd __LL_BIT=64
+-sd __LL_Is_64
+-sd __LONG_BIT=32
+-sd __LittleEndian
+-sd __LittleEndian__
+-sd __Long_Is_32
+-sd __MAX_BIT=64
+-sd __NAMESPACES
+-sd __PROTOTYPES__
+-sd __PTR_BIT=32
+-sd __Ptr_Is_32
+-sd __Ptr_Is_Unsigned__
+-sd __RANGE_BASED_FOR
+-sd __REG_BIT=32
+-sd __Reg_Is_32
+-sd __SHRT_BIT=16
+-sd __SIGNED_CHARS__
+-sd __STANDARD_CXX
+-sd __STANDARD_CXX_HEADERS
+-sd __STDC_HOSTED__=1
+-sd __STDC__=0
+-sd __SoftwareDouble
+-sd __SoftwareDouble__
+-sd __TIME_T_BIT=32
+-sd __Tricore
+-sd __Tricore_EABI_3_0__
+-sd __Tricore_TC1V162
+-sd __Tricore_TC1V162__
+-sd __Tricore__
+-sd __WCHAR_BIT=32
+-sd __WChar_Is_Long__
+-sd __WChar_Is_Signed__
+-sd __c_plusplus=1
+-sd __cplusplus=201103L
+-sd __ghs
+-sd __ghs__
+-sd __ghs_alignment=4
+-sd __ghs_asm=2
+-sd __ghs_max_pack_value=4
+-sd __ghs_sda
+-sd __ghs_zda
+-sd __tricore_rosda
+-sd __tricore_rozda
+
+-a char=1
+-a double=8
+-a float=4
+-a int=4
+-a ldouble=8
+-a long=4
+-a longlong=8
+-a short=2
+-s char=8
+-s double=64
+-s float=32
+-s int=32
+-s ldouble=64
+-s long=32
+-s longlong=64
+-s short=16
+
+-it "size_t=unsigned int"
+-it "ptrdiff_t=signed int"
+
+-accd-
+-aicpm+
+-atanpc-
+-atncrb-
+-audi-
+-dpft-
+-duc99dilt+
+-ifn-
+-ptp-
+-sdep-
+-sig-
+
+-sd "__INTADDR__=1 prl_ignore_paren"
+-sd "__attribute__=_ignore_paren"
+-sd "__const__=const"
+-sd "__ghs_c_int__=int"
+-sd "__inline=inline"
+-sd "__inline__=inline"
+-sd "__interrupt="
+-sd "__noinline="
+-sd "__va_align=1 prl_ignore_paren"
+-sd "__va_float=1 prl_ignore_paren"
+-sd "__va_long=1 prl_ignore_paren"
+-sd "__va_pointer=1 prl_ignore_paren"
+-sd "__va_regtyp=1 prl_ignore_paren"
+-sd "__va_vector=1 prl_ignore_paren"
+-sd "_prl_null_expression=0 prl_ignore_paren"
+-sd _Static_assert=
+-sd __INFINITY__=0
+-sd __NAN__=0
+-sd __generic=
+-sd prl_ignore_paren=_ignore_paren
+
+-sd _XKEYCHECK_H
+
+
+-sd _ALIGN_OF(x)=4
+-SD alignas(s)=
+
+-sd _NO_LOCALES=1
+
+-sd _HAS_VARIADIC_TEMPLATES=1
+-sd _HAS_RVALUE_REFERENCES=1

@@ -1,0 +1,15 @@
+- osType: windows
+  repoWildcard: "C:\\JT\\ws\\[a-zA-Z]*@[0-9]*\\repo"
+  tcc_files:
+    - C:\\JT\\ws\\commonrepo@1\\repo\\ip_if\\tcc_toolversion_itc2.txt
+    - C:\\JT\\ws\\commonrepo@1\\repo\\cust\\apl\\vag_e3_aca\\tcc_toolversion_aca.txt
+    - C:\\JT\\ws\\commonrepo@1\\repo\\cust\\common\\vag_e3_apl\\selena\\itc_tool_version_od.txt
+    - C:\\JT\\ws\\commonrepo@1\\repo\\cust\\common\\vag_e3_apl\\selena\\itc_tool_version_selena.txt
+    - C:\\JT\\ws\\pj-vwmqb37w@1\\repo\\tcc_toolversion_selena.txt
+    - C:\\JT\\ws\\pj-vwmqb37w@1\\repo\\tcc_toolversion_uC.txt
+    - C:\\JT\\ws\\dai_r5plus_br223@1\\repo\\tcc_toolversion_selena.txt
+    - C:\\JT\\ws\\dai_r5plus_br223@1\\repo\\tcc_toolversion_uC.txt
+
+- osType: linux
+  repoWildcard: "/var/jenkins/ws/[a-zA-Z]*@[0-9]*/repo"
+

@@ -1,0 +1,163 @@
+{
+    "meta": {
+        "dependsOnServices": [
+            {
+                "name": "soco01",
+                "description": "Bitbucket service",
+                "checkType": "http",
+                "headers": {
+                    "Accept": "application/json"
+                },
+                "expectedReturnCode": 200,
+                "url": "https://sourcecode01.de.bosch.com/status",
+                "method": "GET"
+            },
+            {
+                "name": "soco",
+                "description": "Bitbucket service",
+                "checkType": "http",
+                "headers": {
+                    "Accept": "application/json"
+                },
+                "expectedReturnCode": 200,
+                "url": "https://sourcecode.socialcoding.bosch.com/status",
+                "method": "GET"
+            },
+            {
+                "name": "bcr",
+                "description": "BCR service",
+                "checkType": "http",
+                "headers": {
+                    "Accept": "application/json"
+                },
+                "expectedReturnCode": 200,
+                "url": "https://bcr-de01.inside.bosch.cloud/login",
+                "method": "GET"
+            },
+            {
+                "name": "jira",
+                "description": "JIRA service",
+                "checkType": "http",
+                "headers": {
+                    "Accept": "application/json"
+                },
+                "expectedReturnCode": 200,
+                "url": "https://rb-tracker.bosch.com/tracker08/status",
+                "method": "GET"
+            },
+            {
+                "name": "artifactory",
+                "description": "Artifactory service",
+                "checkType": "http",
+                "headers": {
+                    "Accept": "application/json"
+                },
+                "expectedReturnCode": 200,
+                "url": " https://rb-artifactory.bosch.com/artifactory",
+                "method": "GET"
+            },
+            {
+                "name": "InfluxDB",
+                "description": "InfluxDB server",
+                "checkType": "port",
+                "host": "abtv55170.de.bosch.com",
+                "port": 8086
+            },
+            {
+                "name": "cantata",
+                "description": "Cantata license server",
+                "checkType": "port",
+                "host": "fe0vmc0829.de.bosch.com",
+                "port": 5093
+            },
+            {
+                "name": "email",
+                "description": "Email server",
+                "checkType": "port",
+                "host": "rb-smtp-int.bosch.com",
+                "port": 25
+            },
+            {
+                "name": "ews-esz-emea",
+                "description": "ews-esz-emea server",
+                "checkType": "port",
+                "host": "ews-esz-emea.api.bosch.com",
+                "port": 443
+            },
+            {
+                "name": "QNX_6287",
+                "description": "QNX license server",
+                "checkType": "port",
+                "host": "rb-lic-qnxlm-cap.de.bosch.com",
+                "port": 6287
+            },
+            {
+                "name": "QNX_6288",
+                "description": "QNX license server",
+                "checkType": "port",
+                "host": "rb-lic-qnxlm-cap.de.bosch.com",
+                "port": 6288
+            },
+            {
+                "name": "win_ccache",
+                "description": "Ccache on Network share",
+                "checkType": "smb",
+                "path": "\\\\abtvdfs2.de.bosch.com\\ismdfs\\iad\\radar5_ci\\ccache\\windows"
+            },
+            {
+                "name": "VW_MRR5E3",
+                "description": "Share providing temporary storage for output artifacts",
+                "checkType": "smb",
+                "path": "\\\\abtvdfs2.de.bosch.com\\ismdfs\\ida\\abt\\radar\\VW_MRR5E3"
+            },
+            {
+                "name": "VW_storage",
+                "description": "Share providing temporary storage for output artifacts",
+                "checkType": "smb",
+                "path": "\\\\abtvdfs1.de.bosch.com\\ismdfs\\ida\\abt\\SW_Build\\Radar\\SystemC\\VW"
+            },
+            {
+                "name": "abtz0c6n",
+                "description": "Node abtz0c6n",
+                "checkType": "port",
+                "host": "abtz0c6n.abt.de.bosch.com",
+                "port": 51235
+            },
+            {
+                "name": "VTD_51007",
+                "description": "VTD server",
+                "checkType": "port",
+                "host": "rb-lic-vtd.de.bosch.com",
+                "port": 51007
+            },
+            {
+                "name": "VTD_51025",
+                "description": "VTD server",
+                "checkType": "port",
+                "host": "rb-lic-vtd.de.bosch.com",
+                "port": 51025
+            },
+            {
+                "name": "pjsym_db",
+                "description": "PJSYM team database",
+                "checkType": "port",
+                "host": "abtz0nqf.abt.de.bosch.com",
+                "port": 8000
+            },
+            {
+                "name": "ccache",
+                "description": "Ccache on Network share",
+                "checkType": "mount",
+                "mount_point": "/var/ccache",
+                "network_path": "//dfs.abt-soc15.storage.de.bosch.com/CC_ad_radar5_ci/ccache/linux"
+            },
+            {
+                "name": "pjsym_results",
+                "description": "pjsym_results dir",
+                "checkType": "mount",
+                "mount_point": "/media/data/pjsym_results",
+                "network_path": "//dfs.abt-soc15.storage.de.bosch.com/CC_ad_radar5_ci/ci_artifacts"
+            }
+        ]
+    }
+}

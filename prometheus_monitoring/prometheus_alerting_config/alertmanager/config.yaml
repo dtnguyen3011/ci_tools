@@ -1,0 +1,62 @@
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: rb-smtp-int.bosch.com:25
+  smtp_from: SystemUser@bosch.com
+  smtp_require_tls: false
+
+route:
+  group_by: [alertname]
+  receiver: std_mail_with_url
+  routes:
+    - match:
+        alertname: StageDurationIncreased
+      receiver: mail
+      group_wait: 5m
+      group_interval: 24h
+      repeat_interval: 24h
+    - match:
+        alertname: StageDurationDecreased
+      receiver: mail
+      group_wait: 5m
+      group_interval: 24h
+      repeat_interval: 24h
+    - match:
+        alertname: SameFailuresOver3h
+      receiver: std_mail_with_url
+      group_wait: 30s
+      group_interval: 1h
+      repeat_interval: 2h
+
+receivers:
+- name: mail
+  email_configs:
+  - to: 'xcdaradarcontinuousx@bosch.com'
+    headers:
+      Subject: "[{{ .CommonLabels.severity }}] {{ .CommonLabels.alertname }}"
+    html: |
+      Greetings,
+      <p>
+      You have an alert {{ .CommonLabels.alertname }} in status {{ .Status }}
+      <table>
+        <tr><th>Stage</th><th>Before</th><th>After</th><th>Details</th></tr>
+      {{ range .Alerts }}
+        <tr><td>{{ .Annotations.stage_name }}</td><td>{{ .Annotations.comparing_value }}</td><td>{{ .Annotations.current_value  }}</td><td><a href="{{ .Annotations.details_link }}">Details on Grafana</a></td></tr>
+      {{ end }}
+      </table>
+      </p>
+
+- name: std_mail_with_url
+  email_configs:
+  - to: 'xcdaradarcontinuousx@bosch.com, Benjamin.Gabriel@de.bosch.com, AntoniaSophie.Baumann@de.bosch.com, Tri.HuaMinh@vn.bosch.com, Moritz.Niederfeld@de.bosch.com, Marc.Keller2@de.bosch.com, Oliver.Feucht@de.bosch.com, Thomas.Abele@de.bosch.com, dewen.zhao@de.bosch.com, Feng.Liu2@de.bosch.com, Christian.Haerdt@de.bosch.com, peter.hobor@hu.bosch.com, Aniket.VivekanandWarnoolkar@in.bosch.com, Frederic.Llovera@de.bosch.com, Istvan.Kovacs3@de.bosch.com, Ralf.Schuermann@de.bosch.com'
+    headers:
+      Subject: "[{{ .CommonLabels.severity }}] {{ .CommonLabels.alertname }}"
+    html: |
+      <p>
+      You have an alert {{ .CommonLabels.alertname }} in status {{ .Status }}
+      <ul>
+      {{ range .Alerts }}
+      <li>We have {{ .Annotations.count }} failures in stage <b>{{ .Labels.Stage }}</b> with error <b>{{ .Labels.reason }}</b> <a href="{{ .Annotations.url }}">Detailed link</a></li>
+      {{ end }}
+      </ul>
+      </p>
+

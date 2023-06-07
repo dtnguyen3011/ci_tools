@@ -1,0 +1,5 @@
+see: https://inside-docupedia.bosch.com/confluence/display/CPDA/How-To+run+QA+Framework+for+Integration+use-case
+
+or 
+
+How-To run QA Framework for Integration use-case-v10-20190730_085432.pdf

@@ -1,0 +1,3 @@
+D:\SBX\pj-if\radar_int\tools\FluxExtractor\output\FluxExtractor.exe --filename FluxinfoRadar.txt --out .\ --var target/Radar_C0_MXL -c DADDY:VFC -a Instrastucture C:\SBX\pj-if\radar_int\arch\system.flux
+D:\SBX\pj-if\radar_int\tools\FluxExtractor\output\FluxExtractor.exe --filename FluxinfoDASY.txt --out .\ --var target/DASY_INT_DEFAULT_ENH -c DADDY:VFC -a EcuSrv  C:\SBX\pj-if\dasy_int\arch\system.flux
+pause

@@ -1,0 +1,35 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset="utf-8"
+
+{
+    "size": 3,
+    "start": 0,
+    "limit": 1000,
+    "isLastPage": true,
+    "values": [
+        {
+            "id": "refs/tags/PJRV-13255-test",
+            "displayId": "PJRV-13255-test",
+            "type": "TAG",
+            "latestCommit": "0bc3d95fd1ee635ca8b40617a5058e18924ffab4",
+            "latestChangeset": "0bc3d95fd1ee635ca8b40617a5058e18924ffab4",
+            "hash": null
+        },
+        {
+            "id": "refs/tags/Test_delete_6",
+            "displayId": "Test_delete_6",
+            "type": "TAG",
+            "latestCommit": "01b55dd41d3131654271f8dc1aa7a9043253d6c9",
+            "latestChangeset": "01b55dd41d3131654271f8dc1aa7a9043253d6c9",
+            "hash": "e30fbe77a7da15a513d2018c92f6918463e9437f"
+        },
+        {
+            "id": "refs/tags/test_AURFACA-316",
+            "displayId": "test_AURFACA-316",
+            "type": "TAG",
+            "latestCommit": "1b3c622d53212bcf6e6a77c23733b9059940c787",
+            "latestChangeset": "1b3c622d53212bcf6e6a77c23733b9059940c787",
+            "hash": null
+        }
+    ]
+}

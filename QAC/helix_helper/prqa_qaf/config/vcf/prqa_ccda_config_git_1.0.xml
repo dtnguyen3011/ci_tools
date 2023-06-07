@@ -1,0 +1,91 @@
+<vcs>
+  <options>
+    <scratch path="scratch" />
+    <ccs cmd="git">
+      <file cmd="cmd.exe" args="/c echo %F" match=".*" pos="1" stoppost="1" />
+      <vers platform="windows" cmd="cmd.exe" args="/c %Bw\gitvers.bat %BD %f" match="commit\s([0-9a-fA-F]+)" pos="2">
+      <extern name="gitvers.bat"><![CDATA[@echo off
+set PATH="c:\Program Files\Git\bin";%PATH%
+cd /d %1
+git log -1 %2
+]]>
+        </extern>
+      </vers>
+      <auth platform="windows" cmd="cmd.exe" args="/c %Bw\gitauth.bat %BD %f" match=".*" pos="1">
+      <extern name="gitauth.bat"><![CDATA[@echo off
+set PATH="c:\Program Files\Git\bin";%PATH%      
+cd /d %1
+git log --format=%%aN -1 %2
+]]>
+        </extern>
+      </auth>
+      <date platform="windows" cmd="cmd.exe" args="/c %Bw\gitdate.bat %BD %f" match=".*"  pos="1">
+      <extern name="gitdate.bat"><![CDATA[@echo off
+set PATH="c:\Program Files\Git\bin";%PATH%      
+cd /d %1
+git log --format=%%ad -1 %2
+]]>
+        </extern>
+      </date>
+      <code platform="windows" cmd="cmd.exe" args="/c %Bw\gitcode.bat %d %m %f" strip="0" console="cat">
+        <extern name="gitcode.bat"><![CDATA[@echo off
+set PATH="c:\Program Files\Git\bin";%PATH%
+cd /d %1
+git show %2:%3
+]]>
+        </extern>
+      </code>
+      <diff platform="windows" cmd="cmd.exe" args="/c gitdiff.bat %d %m %n %F %a %w">
+        <extern name="gitdiff.bat"><![CDATA[@echo off
+set PATH="c:\Program Files\Git\bin";%PATH%
+cd /d %1
+git show %2:%4 > %6\a.txt
+git show %3:%4 > %6\b.txt
+%5\diff -b %6\a.txt %6\b.txt
+]]>
+        </extern>
+      </diff>
+      <sync platform="windows" cmd="cmd.exe" args="/c gitsync.bat %d">
+        <extern name="gitsync.bat"><![CDATA[
+set PATH="c:\Program Files\Git\bin";%PATH%        
+cd /d %1
+rem add branch information to git pull using %O project option settings
+git pull origin
+git submodule update --init --recursive
+]]></extern>
+      </sync>
+    </ccs>
+  </options>
+</vcs>
+<!--
+%F  full path to the local file
+%f  local file, equivalent of, cd `dirname %F`, cvs `basename %F`
+%D  full path to the local file
+%BD full path to the local file, with windows style backslashes
+%Bf local file, with windows style backslashes
+%BF full path including the local file, with windows style backslashes
+%S  local file basename, without the suffix
+%S  local file suffix
+%m  major version number (i.e. current version)
+%n  minor version (i.e. previous version
+%r  path root, e.g. 'wget' for path 'wget/src/connect.c'
+%i  incremental part of the path, used for progressive checkouts
+%c  console output option
+%d  project repository setting
+%u  user
+%p  password
+%o1 user settings option1
+%o2 user settings option2
+%o3 user settings option3
+%o4 user settings option4
+%H  project host setting
+%P  project port setting
+%O1 project settings option1
+%O2 project settings option2
+%O3 project settings option3
+%O4 project settings option4
+%w  working directory (scratch path)
+%Bw scratch path, with windows style backslashes
+%A  prqavcs application path
+%a  prqavcs application path with short path format on windows
+-->

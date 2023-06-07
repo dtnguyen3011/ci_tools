@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "Port plugin config schema",
+    "description": "Port plugin config schema",
+    "default": {},
+    "examples": [
+        {
+            "name": "port",
+            "description": "Jenkins instance port 443",
+            "checkType": "port",
+            "host": "rb-jmaas.de.bosch.com",
+            "port": 443
+        }
+    ],
+    "required": [
+        "name",
+        "description",
+        "checkType",
+        "host",
+        "port"
+    ],
+    "properties": {
+        "name": {
+            "$id": "#/properties/name",
+            "type": "string",
+            "title": "The name schema",
+            "description": "Name of a service check.",
+            "default": "",
+            "examples": [
+                "artifactory"
+            ]
+        },
+        "description": {
+            "$id": "#/properties/description",
+            "type": "string",
+            "title": "The description schema",
+            "description": "Full description of service check.",
+            "default": "",
+            "examples": [
+                "Artifactory service"
+            ]
+        },
+        "checkType": {
+            "$id": "#/properties/checkType",
+            "type": "string",
+            "title": "The checkType schema",
+            "description": "Check type. Corresponds to plugin name.",
+            "const": "port"
+        },
+        "host": {
+            "$id": "#/properties/host",
+            "type": "string",
+            "title": "The host schema",
+            "description": "Hostname or IPv4 address.",
+            "examples": [
+                "localhost"
+            ]
+        },
+        "port": {
+            "$id": "#/properties/port",
+            "type": "integer",
+            "title": "The expectedReturnCode schema",
+            "description": "Port to check.",
+            "examples": [
+                8080
+            ]
+        }
+    },
+    "additionalProperties": true
+}

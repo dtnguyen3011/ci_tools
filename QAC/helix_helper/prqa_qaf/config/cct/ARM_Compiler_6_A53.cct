@@ -1,0 +1,434 @@
+*{
+* "PLATFORM" : "ALL",
+* "COMPILER_HIERARCHY" : "ARM Compiler",
+* "COMPILER_NAME": "ARM Compiler 6",
+* "COMPILER_VERSION": "6.x",
+* "HOST": "standalone",
+* "TARGET": "ARMA53",
+* "SOURCE_LANGUAGE": "C++",
+* "COMPILER_CMD": "armclang",
+* "ADDITIONAL_INCLUDES":"DATA/ARM_Compiler_6_A53/Stub",
+* "INCLUDE_LIST": [
+*   {"INCLUDE_STRUCTURE": {
+*       "INCLUDE_TYPE": "MasterScript",
+*       "INCLUDE_VALUE": "DATA/ARM_Compiler_6_A53/Script/ARM_Compiler_6_A53.py"
+*       }
+*   },
+*   {"INCLUDE_STRUCTURE": {
+*       "INCLUDE_TYPE": "HelperScript",
+*           "INCLUDE_VALUE": ""
+*       }
+*   }
+* ],
+* "SYNCHRONISATION" : {
+*   "INCLUDE_FLAGS":"",
+*   "DEFINE_FLAGS":"",
+*   "SETTINGS_FILE_OPTIONS":{
+*       "FLAG":"",
+*       "EXTENSION":"",
+*       "LITERAL_QUOTES":""
+*       }
+*   }
+*}
+
+-SD _LP64=1
+-SD _USE_STATIC_INLINE=1
+-SD __AARCH64EL__=1
+-SD __ARMCC_VERSION=6060102
+-SD __ARMCOMPILER_LIBCXX=1
+-SD __ARMCOMPILER_VERSION=6060102
+-SD __ARM_64BIT_STATE=1
+-SD __ARM_ACLE=200
+-SD __ARM_ALIGN_MAX_STACK_PWR=4
+-SD __ARM_ARCH=8
+-SD __ARM_ARCH_ISA_A64=1
+-SD __ARM_ARCH_PROFILE='A'
+-SD __ARM_FEATURE_CLZ=1
+-SD __ARM_FEATURE_DIRECTED_ROUNDING=1
+-SD __ARM_FEATURE_DIV=1
+-SD __ARM_FEATURE_FMA=1
+-SD __ARM_FEATURE_IDIV=1
+-SD __ARM_FEATURE_LDREX=0xF
+-SD __ARM_FEATURE_NUMERIC_MAXMIN=1
+-SD __ARM_FEATURE_UNALIGNED=1
+-SD __ARM_FP=0xE
+-SD __ARM_FP16_ARGS=1
+-SD __ARM_FP16_FORMAT_IEEE=1
+-SD __ARM_NEON=1
+-SD __ARM_NEON_FP=0xE
+-SD __ARM_NO_DEPRECATED_FUNCTIONS=1
+-SD __ARM_NO_IMAGINARY_TYPE=1
+-SD __ARM_PCS_AAPCS64=1
+-SD __ARM_PROMISE=__builtin_assume
+-SD __ARM_SIZEOF_MINIMAL_ENUM=4
+-SD __ARM_SIZEOF_WCHAR_T=4
+
+-SD _LIBCPP_FUNC_VIS=""
+-SD _LIBCPP_TYPE_VIS=""
+-SD _LIBCPP_INLINE_VISIBILITY=""
+-SD _LIBCPP_TYPE_VIS_ONLY=""
+
+
+-SD cxx_variadic_templates=1
+-SD cxx_alignas=1
+-SD cxx_exceptions=1
+-SD cxx_rtti=1
+-SD cxx_strong_enums=1
+-SD cxx_decltype=1
+-SD cxx_attributes=0
+-SD cxx_defaulted_functions=1
+-SD cxx_deleted_functions=1
+-SD cxx_lambdas=0
+-SD cxx_nullptr=1
+-SD cxx_rvalue_references=1
+-SD cxx_auto_type=1
+-SD cxx_variadic_templates=1
+-SD cxx_generalized_initializers=1
+*-SD Fis_base_of=0
+*-SD is_final=0
+
+* Objective-C++ features (opt-in)
+-SD objc_arc=0
+-SD objc_arc_weak=0
+
+-SD cxx_constexpr=1
+-SD cxx_relaxed_constexpr=0
+-SD cxx_variable_templates=0
+
+-SD cxx_noexcept=0
+
+-SD "_LIBCPP_UNDERLYING_TYPE(T)=__qacpp_underlying_type(T)"
+
+-SD is_literal=0
+-SD address_sanitizer=0
+-SD cxx_explicit_conversions=0
+
+-SD cxx_atomic=1
+-SD _Atomic(x)=x
+
+-SD __has_feature(x)=x
+
+-SD static_assert=_ignore_semi
+
+*-SD __alignof=__alignof__
+*-SD __alignof__(x)=sizeof(char)
+-SD __alignof__(x)=alignof(x)
+
+-SD __aarch64__=1
+
+-SD __clang__=1
+
+*-SD __cpp_decltype=200707
+-SD __typeof__(__x)=decltype(__x)
+-SD __value_in_regs=""
+
+-SD __cplusplus=201103L
+
+*-SD _LIBCPP_HAS_NO_THREADS
+
+-SD __inline__=""
+-SD __inline=""
+
+-SD __LITTLE_ENDIAN__
+
+-SD __SIZEOF_SIZE_T__=8
+-SD __CHAR_BIT__=8
+
+-SD NDEBUG
+
+* for analysing C as C++
+-SD NULL_PTR=0
+-SD NULL=0
+
+
+-SD __declspec=_ignore_paren
+-SD __attribute=_ignore_paren
+-SD __attribute__=_ignore_paren
+
+-SD __asm=_ignore_paren
+-SD __asm__=_ignore_paren
+-SD asm=_ignore_paren
+
+-SD __dmb=_ignore_paren
+-SD __isb=_ignore_paren
+
+-SD __DBL_DECIMAL_DIG__=17
+-SD __DBL_DENORM_MIN__=4.9406564584124654e-324
+-SD __DBL_DIG__=15
+-SD __DBL_EPSILON__=2.2204460492503131e-16
+-SD __DBL_HAS_DENORM__=1
+-SD __DBL_HAS_INFINITY__=1
+-SD __DBL_HAS_QUIET_NAN__=1
+-SD __DBL_MANT_DIG__=53
+-SD __DBL_MAX_10_EXP__=308
+-SD __DBL_MAX_EXP__=1024
+-SD __DBL_MAX__=1.7976931348623157e+308
+-SD __DBL_MIN_10_EXP__=(-307)
+-SD __DBL_MIN_EXP__=(-1021)
+-SD __DBL_MIN__=2.2250738585072014e-308
+-SD __DECIMAL_DIG__=__LDBL_DECIMAL_DIG__
+
+-SD __FLT_DECIMAL_DIG__=9
+-SD __FLT_DENORM_MIN__=1.40129846e-45F
+-SD __FLT_DIG__=6
+-SD __FLT_EPSILON__=1.19209290e-7F
+-SD __FLT_EVAL_METHOD__=0
+-SD __FLT_HAS_DENORM__=1
+-SD __FLT_HAS_INFINITY__=1
+-SD __FLT_HAS_QUIET_NAN__=1
+-SD __FLT_MANT_DIG__=24
+-SD __FLT_MAX_10_EXP__=38
+-SD __FLT_MAX_EXP__=128
+-SD __FLT_MAX__=3.40282347e+38F
+-SD __FLT_MIN_10_EXP__=(-37)
+-SD __FLT_MIN_EXP__=(-125)
+-SD __FLT_MIN__=1.17549435e-38F
+-SD __FLT_RADIX__=2
+
+-SD __LDBL_DECIMAL_DIG__=36
+-SD __LDBL_DENORM_MIN__=6.47517511943802511092443895822764655e-4966L
+-SD __LDBL_DIG__=33
+-SD __LDBL_EPSILON__=1.92592994438723585305597794258492732e-34L
+-SD __LDBL_HAS_DENORM__=1
+-SD __LDBL_HAS_INFINITY__=1
+-SD __LDBL_HAS_QUIET_NAN__=1
+-SD __LDBL_MANT_DIG__=113
+-SD __LDBL_MAX_10_EXP__=4932
+-SD __LDBL_MAX_EXP__=16384
+-SD __LDBL_MAX__=1.18973149535723176508575932662800702e+4932L
+-SD __LDBL_MIN_10_EXP__=(-4931)
+-SD __LDBL_MIN_EXP__=(-16381)
+-SD __LDBL_MIN__=3.36210314311209350626267781732175260e-4932L
+
+
+-SD __builtin_nan=_ignore_paren
+-SD __builtin_nans=_ignore_paren
+-SD __builtin_nanl=_ignore_paren
+-SD __builtin_nanf=_ignore_paren
+-SD __builtin_nansf=_ignore_paren
+-SD __builtin_nansl=_ignore_paren
+
+-SD __builtin_huge_valf=_ignore_paren
+-SD __builtin_huge_vall=_ignore_paren
+-SD __builtin_huge_val=_ignore_paren
+
+-SD __INT64="long long"
+-SD __int64="long long"
+
+-SD "__fp16=float"
+-SD "__uint128_t=unsigned long long"
+
+-SD __builtin_va_list=void*
+-SD va_start=_ignore_paren
+-SD __builtin_va_start=_ignore_paren
+-SD va_end=_ignore_paren
+-SD __builtin_va_end=_ignore_paren
+-SD va_arg(x,y)=0
+
+-SD alignas(s)=
+
+-SD __is_enum(x)=__qacpp_is_enum(x)
+
+-SD __restrict=__restrict__
+-SD __restrict__=
+-SD "__builtin_offsetof(a,b)=__qacpp_offsetof(a,b)"
+
+-SD __builtin_arm_prefetch=_ignore_paren
+
+*  ARM NEON replacement code
+-SD __extension__=
+
+-SD "__fp16=float"
+-SD "__uint128_t=long long"
+
+* -SD "__builtin_neon_vld1_v(a,b)=1.F"
+-SD "vld1_u8(a)=(static_cast<void>(a),1U)"
+-SD "vld1_u16(a)=(static_cast<void>(a),1U)"
+-SD "vld1_u32(a)=(static_cast<void>(a),1U)"
+-SD "vld1_u64(a)=(static_cast<void>(a),1U)"
+-SD "vld1_s8(a)=(static_cast<void>(a),1)"
+-SD "vld1_s16(a)=(static_cast<void>(a),1)"
+-SD "vld1_s32(a)=(static_cast<void>(a),1)"
+-SD "vld1_s64(a)=(static_cast<void>(a),1)"
+-SD "vld1_f32(a)=(static_cast<void>(a),1.F)"
+-SD "vld1_f64(a)=(static_cast<void>(a),1.)"
+-SD "vld1_p8(a)=(static_cast<void>(a),1)"
+-SD "vld1_p16(a)=(static_cast<void>(a),1)"
+
+* -SD "__builtin_neon_vld2_v(a,b)=1.F"
+-SD "vld2_u8(a)=(static_cast<void>(a),1U)"
+-SD "vld2_u16(a)=(static_cast<void>(a),1U)"
+-SD "vld2_u32(a)=(static_cast<void>(a),1U)"
+-SD "vld2_u64(a)=(static_cast<void>(a),1U)"
+-SD "vld2_s8(a)=(static_cast<void>(a),1)"
+-SD "vld2_s16(a)=(static_cast<void>(a),1)"
+-SD "vld2_s32(a)=(static_cast<void>(a),1)"
+-SD "vld2_s64(a)=(static_cast<void>(a),1)"
+-SD "vld2_f32(a)=(static_cast<void>(a),1.F)"
+-SD "vld2_f64(a)=(static_cast<void>(a),1.)"
+-SD "vld2_p8(a)=(static_cast<void>(a),1)"
+-SD "vld2_p16(a)=(static_cast<void>(a),1)"
+
+* -SD "__builtin_neon_vld3_v(a,b,c)=1.F"
+-SD "vld3_u8(a)={{1U,1U,1U}}"
+-SD "vld3_u16(a)={{1U,1U,1U}}"
+-SD "vld3_u32(a)={{1U,1U,1U}}"
+-SD "vld3_u64(a)={{1U,1U,1U}}"
+-SD "vld3_s8(a)={{1,1,1}}"
+-SD "vld3_s16(a)={{1,1,1}}"
+-SD "vld3_s32(a)={{1,1,1}}"
+-SD "vld3_s64(a)={{1,1,1}}"
+-SD "vld3_f32(a)={{1.F,1.F,1.F}}"
+-SD "vld3_f64(a)={{1.,1.,1.}}"
+-SD "vld3_p8(a)={{1,1,1}}"
+-SD "vld3_p16(a)={{1,1,1}}"
+
+* -SD "__builtin_neon_vld1q_v(a,b)=1.F"
+-SD "vld1q_u8(a)=(static_cast<void>(a),1)"
+-SD "vld1q_u16(a)=(static_cast<void>(a),1)"
+-SD "vld1q_u32(a)=(static_cast<void>(a),1)"
+-SD "vld1q_u64(a)=(static_cast<void>(a),1)"
+-SD "vld1q_s8(a)=(static_cast<void>(a),1)"
+-SD "vld1q_s16(a)=(static_cast<void>(a),1)"
+-SD "vld1q_s32(a)=(static_cast<void>(a),1)"
+-SD "vld1q_s64(a)=(static_cast<void>(a),1)"
+-SD "vld1q_f32(a)=(static_cast<void>(a),1.F)"
+-SD "vld1q_f64(a)=(static_cast<void>(a),1.)"
+-SD "vld1q_p8(a)=(static_cast<void>(a),1)"
+-SD "vld1q_p16(a)=(static_cast<void>(a),1)"
+
+* -SD "__builtin_neon_vld1q_dup_v(a,b)=1.F"
+-SD "vld1q_dup_u8(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_u16(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_u32(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_u64(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_s8(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_s16(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_s32(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_s64(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_f32(a)=(static_cast<void>(a),1.F)"
+-SD "vld1q_dup_f64(a)=(static_cast<void>(a),1.)"
+-SD "vld1q_dup_p8(a)=(static_cast<void>(a),1)"
+-SD "vld1q_dup_p16(a)=(static_cast<void>(a),1)"
+
+* -SD "__builtin_neon_vld3q_v(a,b,c)=1.F"
+-SD "vld3q_u8(a)={{1U,1U,1U}}"
+-SD "vld3q_u16(a)={{1U,1U,1U}}"
+-SD "vld3q_u32(a)={{1U,1U,1U}}"
+-SD "vld3q_u64(a)={{1U,1U,1U}}"
+-SD "vld3q_s8(a)={{1,1,1}}"
+-SD "vld3q_s16(a)={{1,1,1}}"
+-SD "vld3q_s32(a)={{1,1,1}}"
+-SD "vld3q_s64(a)={{1,1,1}}"
+-SD "vld3q_f32(a)={{1.F,1.F,1.F}}"
+-SD "vld3q_f64(a)={{1.,1.,1.}}"
+-SD "vld3q_p8(a)={{1,1,1}}"
+-SD "vld3q_p16(a)={{1,1,1}}"
+
+* -SD "__builtin_neon_vst1_v=_ignore_paren"
+-SD "vst1_u8=_ignore_paren"
+-SD "vst1_u16=_ignore_paren"
+-SD "vst1_u32=_ignore_paren"
+-SD "vst1_u64=_ignore_paren"
+-SD "vst1_s8=_ignore_paren"
+-SD "vst1_s16=_ignore_paren"
+-SD "vst1_s32=_ignore_paren"
+-SD "vst1_s64=_ignore_paren"
+-SD "vst1_f32=_ignore_paren"
+-SD "vst1_f64=_ignore_paren"
+-SD "vst1_p8=_ignore_paren"
+-SD "vst1_p16=_ignore_paren"
+
+* -SD "__builtin_neon_vst1q_v=_ignore_paren"
+-SD "vst1q_u8=_ignore_paren"
+-SD "vst1q_u16=_ignore_paren"
+-SD "vst1q_u32=_ignore_paren"
+-SD "vst1q_u64=_ignore_paren"
+-SD "vst1q_s8=_ignore_paren"
+-SD "vst1q_s16=_ignore_paren"
+-SD "vst1q_s32=_ignore_paren"
+-SD "vst1q_s64=_ignore_paren"
+-SD "vst1q_f32=_ignore_paren"
+-SD "vst1q_f64=_ignore_paren"
+-SD "vst1q_p8=_ignore_paren"
+-SD "vst1q_p16=_ignore_paren"
+
+* -SD "__builtin_neon_vst2q_v=_ignore_paren"
+-SD "vst2q_u8=_ignore_paren"
+-SD "vst2q_u16=_ignore_paren"
+-SD "vst2q_u32=_ignore_paren"
+-SD "vst2q_u64=_ignore_paren"
+-SD "vst2q_s8=_ignore_paren"
+-SD "vst2q_s16=_ignore_paren"
+-SD "vst2q_s32=_ignore_paren"
+-SD "vst2q_s64=_ignore_paren"
+-SD "vst2q_f32=_ignore_paren"
+-SD "vst2q_f64=_ignore_paren"
+-SD "vst2q_p8=_ignore_paren"
+-SD "vst2q_p16=_ignore_paren"
+
+* -SD "__builtin_neon_vst3q_v=_ignore_paren"
+-SD "vst3q_u8=_ignore_paren"
+-SD "vst3q_u16=_ignore_paren"
+-SD "vst3q_u32=_ignore_paren"
+-SD "vst3q_u64=_ignore_paren"
+-SD "vst3q_s8=_ignore_paren"
+-SD "vst3q_s16=_ignore_paren"
+-SD "vst3q_s32=_ignore_paren"
+-SD "vst3q_s64=_ignore_paren"
+-SD "vst3q_f32=_ignore_paren"
+-SD "vst3q_f64=_ignore_paren"
+-SD "vst3q_p8=_ignore_paren"
+-SD "vst3q_p16=_ignore_paren"
+
+* -SD "__builtin_neon_vget_lane_f32(a,b)=1.F"
+-SD "vget_lane_f32(a,b)=(static_cast<void>(a),static_cast<void>(b),1.F)"
+
+* -SD "__builtin_neon_vgetq_lane_f32(a,b)=1.F"
+-SD "vgetq_lane_f32(a,b)=(static_cast<void>(a),static_cast<void>(b),1.F)"
+
+* -SD "__builtin_neon_vshlq_n_v(a,b,c)=1.F"
+-SD "vshlq_n_u8(a,b)=a"
+-SD "vshlq_n_u16(a,b)=a"
+-SD "vshlq_n_u32(a,b)=a"
+-SD "vshlq_n_u64(a,b)=a"
+-SD "vshlq_n_s8(a,b)=a"
+-SD "vshlq_n_s16(a,b)=a"
+-SD "vshlq_n_s32(a,b)=a"
+-SD "vshlq_n_s64(a,b)=a"
+-SD "vshlq_n_f32(a,b)=a"
+-SD "vshlq_n_f64(a,b)=a"
+-SD "vshlq_n_p8(a,b)=a"
+-SD "vshlq_n_p16(a,b)=a"
+
+* __builtin_neon_vshrq_n_v
+-SD "vshrq_n_u8(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_u16(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_u32(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_u64(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_s8(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_s16(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_s32(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_s64(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_f32(a,b)=(static_cast<void>(a),static_cast<void>(b),1.F)"
+-SD "vshrq_n_f64(a,b)=(static_cast<void>(a),static_cast<void>(b),1.)"
+-SD "vshrq_n_p8(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+-SD "vshrq_n_p16(a,b)=(static_cast<void>(a),static_cast<void>(b),1)"
+
+* -SD "__builtin_neon_vcvtq_n_s32_v(a,b,c)=1.F"
+-SD "__builtin_neon_vcvtq_f32_v=_ignore_paren"
+-SD "vcvtq_n_s32_f32(a,b)=1.F"
+
+* -SD "__builtin_neon_vst1_lane_v(a,b,c,d)"
+-SD "vst1_lane_u8=_ignore_paren"
+-SD "vst1_lane_u16=_ignore_paren"
+-SD "vst1_lane_u32=_ignore_paren"
+-SD "vst1_lane_u64=_ignore_paren"
+-SD "vst1_lane_s8=_ignore_paren"
+-SD "vst1_lane_s16=_ignore_paren"
+-SD "vst1_lane_s32=_ignore_paren"
+-SD "vst1_lane_s64=_ignore_paren"
+-SD "vst1_lane_f32=_ignore_paren"
+-SD "vst1_lane_f64=_ignore_paren"
+-SD "vst1_lane_p8=_ignore_paren"
+-SD "vst1_lane_p16=_ignore_paren"

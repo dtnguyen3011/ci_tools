@@ -1,0 +1,47 @@
+groups:
+  - name: stage_data
+    interval: 2h
+    rules:
+    - record: stage:duration:avgoneday
+      expr: avg(avg_over_time(default_jenkins_builds_last_stage_duration_milliseconds_summary_sum[1d])) by (stage) / 1000
+    - record: stage:duration:avgsevendays
+      expr: avg(avg_over_time(default_jenkins_builds_last_stage_duration_milliseconds_summary_sum[7d])) by (stage) / 1000
+    - alert: StageDurationIncreased
+      expr: |
+        (stage:duration:avgoneday) > (stage:duration:avgsevendays) * 1.1 > 300
+      labels:
+        severity: WARNING
+      annotations:
+        description: Average stage build duration has increased
+        stage_name: "{{ $labels.stage }}"
+        current_value: "{{ $value | humanizeDuration }}"
+        comparing_value: "{{ printf \"stage:duration:avgsevendays{stage='%s'}\" $labels.stage | query | first | value | humanizeDuration }}"
+        curren_time_range: "day"
+        comparing_time_range: "7 days"
+        details_link: 'https://abtv55170.de.bosch.com:3000/d/UM2A7Sfnz?orgId=15/stage-time-deviations-monitoring&var-stage_name={{ reReplaceAll " +"  "_" $labels.stage }}'
+    - alert: StageDurationDecreased
+      expr: |
+        300 < (stage:duration:avgoneday) * 1.1 < (stage:duration:avgsevendays)
+      labels:
+        severity: INFO
+      annotations:
+        description: Average stage build duration has decreased
+        stage_name: "{{ $labels.stage }}"
+        current_value: "{{ $value | humanizeDuration }}"
+        comparing_value: "{{ printf \"stage:duration:avgsevendays{stage='%s'}\" $labels.stage | query | first | value | humanizeDuration }}"
+        curren_time_range: "day"
+        comparing_time_range: "7 days"
+        details_link: 'https://abtv55170.de.bosch.com:3000/d/UM2A7Sfnz?orgId=15/stage-time-deviations-monitoring&var-stage_name={{ reReplaceAll " +"  "_" $labels.stage }}'
+
+  - name: stage_failures
+    interval: 30m
+    rules:
+      - alert: SameFailuresOver3h
+        expr: |
+          (sum_over_time(Failure_reasons_total{Stage!="Undefined"}[3h])) > 5
+        labels:
+          severity: warning
+        annotations:
+          description: 'We have {{ $value }} failures in {{ $labels.Stage }} with error {{ $labels.reason }}'
+          url: 'https://abtv55170.de.bosch.com:3000/d/Gyln4hXnk/build-failures-stats?orgId=15&var-reason={{ reReplaceAll " +" "%20" $labels.reason }}&var-stage={{ reReplaceAll " +" "%20" $labels.Stage }}&from=now-24h&to=now'
+          count: '{{ $value }}'

@@ -1,0 +1,53 @@
+pipeline {
+    agent {
+        label 'buildslaves_abts55144'
+    }
+    environment {
+        CREDS  = credentials('BCR_TOKEN')
+    }
+
+    stages {
+        stage('Preparing environment') {
+            steps {
+                script {
+                    //importing fresh stuff
+                    dir("${WORKSPACE}/") {
+                        checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: "${params.branch}"]],
+                    userRemoteConfigs: [[credentialsId: 'LUCXPASSWORD',
+                                        url: 'https://sourcecode01.de.bosch.com/scm/radtoolcust/ci_tools.git']]
+                    ])
+                        sh('mkdir -p /opt/loki-shipper/')
+                    }
+                }
+            }
+        }
+
+        stage('build image') {
+            when { changeset 'docker/loki_log_shipper/**' }
+            steps {
+                sh(script: """
+                docker run --rm --privileged --name docker-builder -v /var/run/docker.sock:/var/run/docker.sock \
+                -v ${WORKSPACE}/docker/loki_log_shipper:/app bcr-de01.inside.bosch.cloud/radar_gen5/python-builder:0.1 \
+                python3 /builder/build.py -u $CREDS_USR -p $CREDS_PSW -n loki-shipper --push
+                rm -f docker/loki_log_shipper/pip.conf
+                """)
+            }
+        }
+
+        stage('Deploy') {
+            when { changeset 'docker/loki_log_shipper/**' }
+            steps {
+                script {
+                    def version = readFile(file: 'docker/loki_log_shipper/version')
+                    sh("""cp -f docker/loki_log_shipper/docker-compose.yaml /opt/loki-shipper/docker-compose.yaml
+                    cd /opt/loki-shipper
+                    sed -i 's/LS_VERSION=.*/LS_VERSION=v${version}/g' .env
+                    docker-compose up -d
+                    """)
+                }
+            }
+        }
+    }
+}

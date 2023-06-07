@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report for {{ variant }} PR{{ prid }} Build {{ build_number }}</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .stripes {
+            background: repeating-linear-gradient(
+            45deg,
+            #d6d6d6,
+            #d6d6d6 10px,
+            #bebebe 10px,
+            #bebebe 20px
+            );
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 22px;
+          }
+          
+          /* Hide default HTML checkbox */
+          .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+          
+          /* The slider */
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          input:checked + .slider {
+            background-color: #2196F3;
+          }
+          
+          input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+          }
+          
+          input:checked + .slider:before {
+            -webkit-transform: translateX(17px);
+            -ms-transform: translateX(17px);
+            transform: translateX(17px);
+          }
+          
+          /* Rounded sliders */
+          .slider.round {
+            border-radius: 22px;
+          }
+          
+          .slider.round:before {
+            border-radius: 50%;
+          }
+
+        .header {
+            margin: 1rem;
+        }
+
+        .controls {
+            margin-top: 1rem;
+        }
+
+        .content {
+            font-family: monospace;
+        }
+        
+        span.component {
+            display: inline-block;
+            padding: .2rem .3rem .3rem .3rem;
+            background-color: indigo;
+            font-weight: bold;
+            color: white;
+            border-radius: 5px;
+            user-select: none;
+            margin-top: 5px;
+        }
+        
+        span.component:hover {
+            cursor: pointer;
+            filter: brightness(110%);
+            
+        }
+
+        span.elxr {
+            display: inline-block;
+            padding: .2rem .3rem .3rem .3rem;
+            background-color: rgb(0, 88, 29);
+            font-weight: bold;
+            color: white;
+            border-radius: 5px;
+            user-select: none;
+            margin-top: 5px;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        table .qtycell {
+            width: 50px;
+        }
+
+        table .rowcolcell {
+            width: 50px;
+        }
+
+        table .typecell {
+            width: 60px;
+        }
+
+        table .componentcell {
+            width: 90px;
+        }
+
+        thead th {
+            position:sticky;
+            top: 0;
+            padding-left: 5px;
+            padding-right: 5px;
+            color: white;
+            background-color: rgb(88, 88, 88);
+            font-weight: bold;
+            height: 3.4rem;
+            border-left: 1px solid grey;
+        }
+
+        table td {
+            overflow-wrap:break-word;
+            border: 1px solid rgb(146, 146, 146);
+            padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: rgb(238, 238, 238);
+        }
+
+        .warnings {
+            margin-right: 1rem;
+            margin-left: 1rem;
+        }
+
+        .filter-input {
+            width: 100%;
+            background-color: rgb(88, 88, 88);
+            border: none;
+            border-bottom: 2px solid gray;
+            margin-top: .2rem;
+            color: white;
+            height: 1.4rem;
+        }
+
+        .modal {
+            overflow: hidden;   
+            display: block;
+            position:   fixed;
+            z-index:    1000;
+            top:        0;
+            left:       0;
+            height:     100%;
+            width:      100%;
+            background: rgba( 255, 255, 255, .8 )
+                        url('http://i.stack.imgur.com/FhHRx.gif') 
+                        50% 50% 
+                        no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <h1>PR{{ prid }} ({{ pr_title }})</h1>
+            <h2>Compiler/linker warnings check for {{ variant }} (build {{ build_number }})</h2>
+            <h3>Merge of source commit {{ source_commit }} and target commit {{ target_commit }}</h3>
+                <div class="controls">
+                <div>
+                <label class="switch">
+                    <input type="checkbox" class="pronlyswitch">
+                    <span class="slider round"></span>
+                  </label>
+                  <span style="display: inline-block;">Display all warnings</span>
+                </div>
+                </div>
+        </div>
+        <div class="warnings"></div>
+    </div>
+    <script type="text/javascript">
+    warningsData = {{ json_data }}
+    </script>
+    <script type="text/javascript">
+    class Warnings {
+        constructor(warnings) {
+            this.prOnlySwitch = document.querySelector('.pronlyswitch')
+            this.prOnlySwitch.addEventListener('change', this.display.bind(this))
+            this.warnings = warnings
+            this.prWarnings = warnings.filter(
+                warning => warning.pr_related
+            )
+            this.filters = []
+            this.fieldFilters = {}
+        }
+
+        search(string) {
+            if (this.filters.includes(string)) {
+                this.filters.splice(this.filters.indexOf(string), 1)
+            } else {
+                this.filters.push(string)
+            }
+            this.display()
+        }
+
+        toggleFilter(field, string) {
+            if (string.length > 0) {
+                const obj = {}
+                obj[field] = string
+                this.fieldFilters = {...this.fieldFilters, ...obj}
+            } else {
+                delete this.fieldFilters[field]
+            }
+            this.display()
+        }
+
+        init() {
+            const warningsDiv = document.querySelector('div.warnings')
+            const warningsTable = this.createCompilerWarningsTable()
+            warningsDiv.append(warningsTable)
+            this.display()
+        }
+
+        display() {
+            const prOnly = !document.querySelector('.pronlyswitch').checked
+            let filteredWarnings = []
+            if (prOnly) {
+                filteredWarnings = this.prWarnings
+            } else {
+                filteredWarnings = this.warnings
+            }
+
+            // search in all fields
+            for (const filter of this.filters) {
+                filteredWarnings = 
+                    filteredWarnings.filter(warning => JSON.stringify(Object.values(warning)).includes(filter))
+            }
+
+            //filter by specific field
+            for (const field of Object.keys(this.fieldFilters)) {
+                filteredWarnings = filteredWarnings.filter(
+                    warning => String(warning[field]).toLowerCase().includes(String(this.fieldFilters[field]).toLowerCase()))
+            }
+
+            const warningsTable = document.querySelector('#warnings-table')
+            const tableData = document.querySelector('#warnings-table tbody')
+            if (tableData) {
+                tableData.remove()
+            }
+            warningsTable.append(this.appendTableData(filteredWarnings))
+            document.body.scrollTop = 0
+            document.documentElement.scrollTop = 0
+        }
+
+        appendTableData(warnings) {
+            const tdata = document.createElement('tbody')
+    
+            for (const warning of warnings) {
+                if (warning['domain'] === 'compiler') {
+                    const row = this.createCompilerWarningRow(warning)
+                    tdata.append(row)
+                } else if (warning['domain'] === 'linker') {
+                    const row = this.createCompilerWarningRow(warning)
+                    tdata.append(row)
+                }
+            }
+            return tdata
+        }
+
+        createCompilerWarningRow(warning) {
+            const row = document.createElement('tr')
+            row.className = 'row'
+    
+            const  qtyCell = document.createElement('td')
+            qtyCell.innerText = warning['quantity']
+    
+            const filenameCell = document.createElement('td')
+            filenameCell.innerText = warning['file_path']
+
+            const rowColCell = document.createElement('td')
+            if (warning['domain'] === 'compiler') {
+                rowColCell.innerText = `${warning['row']}/${warning['column'] || '-'}`
+            }
+            if (warning['domain'] === 'linker') {
+                const elxrSpan = document.createElement('span')
+                elxrSpan.classList.add('elxr')
+                elxrSpan.innerText = warning['row']
+                rowColCell.append(elxrSpan)
+            }
+    
+            const typeCell = document.createElement('td')
+            typeCell.className = 'nowrap'
+            typeCell.innerText = warning['type_name']
+    
+            const messageCell = document.createElement('td')
+            messageCell.innerText = warning['message']
+    
+            const componentCell = document.createElement('td')
+            // Display components badges only for compiler warnings
+            //if (warning['domain'] === 'compiler') {
+                for (const component of warning['teams']) {
+                        const componentSpan = document.createElement('span')
+                        componentSpan.className = 'component'
+                        componentSpan.innerText = component
+                        componentSpan.addEventListener("click", (event) => {
+                            warningsClass.toggleFilter('teams', component)
+                        })
+                        componentCell.append(componentSpan)
+                }
+            //}
+            if (warning['domain'] === 'linker') {
+                componentCell.classList.add('stripes')
+            }
+    
+            row.append(qtyCell)
+            row.append(filenameCell)
+            row.append(rowColCell)
+            row.append(typeCell)
+            row.append(messageCell)
+            row.append(componentCell)
+    
+            return row
+        }
+    
+        createCompilerWarningsTable() {
+            const warningsTable = document.createElement('table')
+            warningsTable.id = 'warnings-table'
+            const tableHead = document.createElement('thead')
+            const tableHeadRow = document.createElement('tr')
+            tableHead.append(tableHeadRow)
+    
+            const cells = [
+                {name: 'Qty', class: 'qty', field: 'quantity'},
+                {name: 'Filename', class: 'filename', field: 'file_path'},
+                {name: 'Row/ Col', class: 'rowcol', field: 'row'},
+                {name: 'Type', class: 'type', field: 'type_name'},
+                {name: 'Message', class: 'message', field: 'message'},
+                {name: 'Component', class: 'component', field: 'teams'}
+            ]
+
+            for (const cell of cells) {
+                const element = document.createElement('th')
+                element.className = `${cell.class}cell`
+                element.innerText = cell.name
+
+                if (cell.class !== 'qty' && cell.class !== 'rowcol') {
+                    const input = document.createElement('input')
+                    input.className = 'filter-input'
+                    input.addEventListener('keyup', (event) => {
+                        if (event.key === 'Enter' || event.keyCode === 13) {
+                            warningsClass.toggleFilter(cell.field, event.target.value)
+                        }
+                    })
+                    input.addEventListener('blur', (event) => {
+                        warningsClass.toggleFilter(cell.field, event.target.value)
+                    })
+                    input.type = 'text'
+                    element.append(input)
+                }
+
+                tableHeadRow.append(element)
+            }
+    
+            warningsTable.append(tableHead)
+    
+            return warningsTable
+        }
+    }
+
+        const warningsClass = new Warnings(warningsData)
+        warningsClass.init()
+    </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+dc_fw/src/per/modules/controllers/eim_rer/src/per_eimRerController.cpp
+dc_fw/src/per/runnables/rip/src/per_ripRunnable.cpp
+dc_fw/src/per/modules/controllers/eim_rer/src/per_eimRerController.cpp

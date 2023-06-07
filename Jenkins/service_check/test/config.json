@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "dependsOnServices": [
+      {
+        "name": "Code SMB share",
+        "description": "Windows share for codebase",
+        "checkType": "smb",
+        "path": "\\\\Fe00fs47.de.bosch.com\\rka6abt$"
+      }
+    ]
+  },
+  "pipelines": [
+    {
+      "nodes": [
+        {
+          "meta": {
+            "nodeMeta": true
+          },
+          "stages": [
+            {
+              "meta": {
+                "dependsOnServices": [
+                  {
+                    "name": "Build SMB from storage server",
+                    "description": "Share providing temporary storage for output artifacts",
+                    "checkType": "smb",
+                    "path": "\\\\bosch.com\\dfsrb"
+                  },
+                  {
+                    "name": "Build SMB share for input",
+                    "description": "Share providing temporary storage for input files",
+                    "checkType": "smb",
+                    "path": "\\\\bosch.com\\dfsrb"
+                  }
+                ]
+              },
+              "name": "Stage B1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "post": [
+    {
+      "stages": [
+        {
+          "meta": {
+            "dependsOnServices": [
+              {
+                "name": "artifactory",
+                "description": "Artifactory service",
+                "checkType": "http",
+                "username": "User",
+                "password": "Pa$$word",
+                "headers": {
+                  "Accept": "application/json"
+                },
+                "expectedReturnCode": 200,
+                "url": "https://rb-jmaas.de.bosch.com/radar_customer_gen5/api/json?pretty=true",
+                "method": "GET"
+              }
+            ]
+          },
+          "name": "Archive Logs"
+        }
+      ]
+    }
+  ]
+}

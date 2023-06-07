@@ -1,0 +1,127 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "Http plugin config schema",
+    "description": "Http plugin config schema",
+    "default": {},
+    "examples": [
+        {
+            "name": "artifactory",
+            "description": "Artifactory service",
+            "checkType": "http",
+            "username": "User",
+            "password": "pa$$word",
+            "headers": {
+                "Accept": "application/json",
+                "Host": "test.host",
+				"X-Forwarded-For": "10.0.0.1"
+            },
+            "expectedReturnCode": 200,
+            "url": "https://rb-jmaas.de.bosch.com/radar_customer_gen5/api/json?pretty=true"
+        }
+    ],
+    "required": [
+        "name",
+        "description",
+        "checkType",
+        "expectedReturnCode",
+        "url",
+        "method"
+    ],
+    "properties": {
+        "name": {
+            "$id": "#/properties/name",
+            "type": "string",
+            "title": "Service check name",
+            "description": "Name of the service. Should be unique or configs with the same name can be overwritten.",
+            "default": "",
+            "examples": [
+                "artifactory"
+            ]
+        },
+        "description": {
+            "$id": "#/properties/description",
+            "type": "string",
+            "title": "Service check description",
+            "description": "Description and explanation about the purpose of this service check.",
+            "default": "",
+            "examples": [
+                "Artifactory service"
+            ]
+        },
+        "checkType": {
+            "$id": "#/properties/checkType",
+            "type": "string",
+            "title": "Check type",
+            "description": "Check type indicates which plugin is used to perform the service check.",
+            "const": "http"
+        },
+        "username": {
+            "$id": "#/properties/username",
+            "type": "string",
+            "title": "User name",
+            "description": "The username to use when performing the service check.",
+            "default": "",
+            "examples": [
+                "raa9lr"
+            ]
+        },
+        "password": {
+            "$id": "#/properties/password",
+            "type": "string",
+            "title": "The Password",
+            "description": "The password to use when performing the service check.",
+            "default": "",
+            "examples": [
+                "pa$$word"
+            ]
+        },
+        "headers": {
+            "$id": "#/properties/headers",
+            "type": "object",
+            "title": "HTTP headers",
+            "description": "The HTTP headers that will be sent with the request.",
+            "default": {},
+            "examples": [
+                {
+                    "Accept": "application/json",
+                    "Host": "test.host"
+                }
+            ],
+            "additionalProperties": true
+        },
+        "expectedReturnCode": {
+            "$id": "#/properties/expectedReturnCode",
+            "type": "integer",
+            "title": "HTTP result code",
+            "description": "Expected HTTP result code.",
+            "default": 200,
+            "examples": [
+                200
+            ]
+        },
+        "method": {
+            "$id": "#/properties/method",
+            "type": "string",
+            "title": "HTTP method",
+            "description": "The HTTP method to use in the request.",
+            "default": "GET",
+            "enum": ["GET" , "HEAD", "OPTIONS"],
+            "examples": [
+                "GET"
+            ]
+        },
+        "url": {
+            "$id": "#/properties/url",
+            "type": "string",
+            "title": "URL",
+            "description": "The URL which will be probed by the service check.",
+            "default": "",
+            "examples": [
+                "https://rb-jmaas.de.bosch.com/radar_customer_gen5/api/json?pretty=true"
+            ]
+        }
+    },
+    "additionalProperties": false
+}

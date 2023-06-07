@@ -1,0 +1,303 @@
+*{
+* "PLATFORM" : "PLATFORM_WIN32",
+* "COMPILER_HIERARCHY" : "GHS",
+* "COMPILER_NAME": "GHS for RH850",
+* "COMPILER_VERSION": "201815",
+* "HOST": "standalone",
+* "TARGET": "RH850",
+* "SOURCE_LANGUAGE": "C++",
+* "COMPILER_CMD": "cxtri",
+* "ADDITIONAL_INCLUDES":"DATA/GHS_201815_standalone_RH850_C++11/Stub",
+* "INCLUDE_LIST": [
+*   {"INCLUDE_STRUCTURE": {
+*       "INCLUDE_TYPE": "MasterScript",
+*       "INCLUDE_VALUE": "DATA/GHS_201815_standalone_RH850_C++11/Script/GHS_201815_standalone_RH850_C++11.py"
+*       }
+*   },
+*   {"INCLUDE_STRUCTURE": {
+*       "INCLUDE_TYPE": "HelperScript",
+*           "INCLUDE_VALUE": ""
+*       }
+*   }
+* ],
+* "SYNCHRONISATION" : {
+*   "INCLUDE_FLAGS":"",
+*   "DEFINE_FLAGS":"",
+*   "SETTINGS_FILE_OPTIONS":{
+*       "FLAG":"",
+*       "EXTENSION":"",
+*       "LITERAL_QUOTES":""
+*       }
+*   }
+*}
+
+-sd __ghs
+-sd __GHS_VERSION_NUMBER=201815
+-sd __ghs__
+-sd __PROTOTYPES__
+-sd __GHS_FEATURE_DISABLED=2
+-sd __GHS_FEATURE_ENABLED=3
+-sd __GHS_FEATURE_STRIPPED=1
+
+-sd __STDC__=0
+-sd __STDC_HOSTED__=1
+-sd __ATTRIBUTES
+-sd __EDG__
+
+-sd __c_plusplus=1
+-sd __cplusplus=201103L
+-sd __LANGUAGE_CXX
+
+-sd __LANGUAGE_CXX__
+-sd _WCHAR_T
+-sd _BOOL
+-sd __ARRAY_OPERATORS
+-sd __VARIADIC_TEMPLATES=1
+
+-sd __EDG_RUNTIME_USES_NAMESPACES
+-sd __EDG_TYPE_TRAITS_ENABLED=1
+-sd __EDG_CONSTEXPR_ENABLED__=1
+-sd __EDG_PTRDIFF_TYPE__=int
+-sd __NAMESPACES
+-sd __AUTO_TYPE
+
+-sd __RANGE_BASED_FOR
+-sd __STANDARD_CXX
+-sd __STANDARD_CXX_HEADERS
+
+-sd __FastMathLib__
+-sd __FastMathLib____
+-sd __ghs_asm=2
+-sd __ELF
+-sd __ELF__
+-sd __EDG_VERSION__=413
+
+-sd __CORE_V850E3V5__
+-sd __CORE_V850E2V3__
+-sd __CORE_V850E2R__
+
+-sd __CORE_V850E2__
+-sd __CORE_V850E__
+-sd __CORE_V850__
+-sd __V850E
+
+-sd __V850E__
+-sd __V850E2
+-sd __V850E2__
+-sd __V850E2R
+-sd __V850E2R__
+
+-sd __V850E2RV3
+-sd __V850E2RV3__
+-sd __V850E2V3
+-sd __V850E2V3__
+-sd __V850E3
+
+-sd __V850E3__
+-sd __V850E3V5
+-sd __V850E3V5__
+-sd __RH850
+-sd __RH850__
+
+-sd __V850
+-sd __V850__
+-sd __RH850G3M__
+-sd __RH850G3M
+-sd __V800_reserve_r2
+
+-sd __V800_reserve_r2__
+-sd __V800_registermode=32
+
+-sd __V800_registermode__=32
+-sd __RH850_FPU_VERSION=3
+
+-sd __RH850_FPU_VERSION__=3
+-sd __V800_no_callt
+-sd __V800_no_callt__
+
+-sd __V800_ignore_callt_state_in_interrupts
+
+-sd __V800_ignore_callt_state_in_interrupts__
+-sd __V850E2_SDA23
+
+-sd __V850E2_SDA23__
+-sd __V800
+-sd __V800__
+-sd __v850
+-sd __v851__
+
+-sd __v850e__
+-sd __RH850_ABI_GHS2015__
+-sd __FLT_SUBNORMAL_IS_ZERO__
+
+-sd __SUBNORMAL_IS_ZERO__
+-sd __ghs_alignment=8
+-sd __ghs_max_pack_value=8
+
+-sd __ghs_sda_threshold=32767
+-sd __ghs_sda
+-sd __ghs_zda
+-sd __GHS_UNICODE__
+
+-sd __LittleEndian
+-sd __LittleEndian__
+-sd __LITTLE_ENDIAN__
+-sd __IeeeFloat
+
+-sd __IeeeFloat__
+-sd __GHS_NOCOMMONS
+-sd __GHS_NOCOMMONS__
+
+-sd __Char_Is_Signed__
+-sd __SIGNED_CHARS__
+-sd __Ptr_Is_Unsigned__
+
+-sd __Field_Is_Signed__
+-sd __Enum_Field_Is_Signed__
+-sd __Int_Is_32
+
+-sd __Long_Is_32
+-sd __LL_Is_64
+-sd __Ptr_Is_32
+-sd __CHAR_BIT=8
+
+-sd __SHRT_BIT=16
+-sd __INT_BIT=32
+-sd __LONG_BIT=32
+-sd __WCHAR_BIT=32
+
+-sd __PTR_BIT=32
+-sd __FUNCPTR_BIT=32
+-sd __TIME_T_BIT=32
+-sd __LL_BIT=64
+
+-sd __LLONG_BIT=64
+-sd __MAX_BIT=64
+-sd __LDBL_BIT=64
+-sd __LDBL_SIZE=8
+
+-sd __REG_BIT=32
+-sd __FREG_BIT=32
+-sd __Reg_Is_32
+-sd __WChar_Is_Signed__
+
+-sd __WChar_Is_Long__
+-sd __GHS_OPTIMIZE__
+
+-sd __GHS_Inline_String_Functions
+-sd __GHS_Inline_Memory_Functions
+
+-sd __GHS_Optimize_General__
+
+-sd __GHS_NOCOMMONS__=1
+-sd __RANGE_BASED_FOR=1
+-sd "__EDG_SIZE_TYPE__=unsigned int"
+-sd __cpp_aggregate_nsdmi=201304
+-sd __cpp_alias_templates=200704
+-sd __cpp_attributes=200809
+-sd __cpp_binary_literals=201304
+-sd __cpp_constexpr=201304
+-sd __cpp_decltype_auto=201304
+-sd __cpp_decltype=200707
+-sd __cpp_delegating_constructors=200604
+-sd __cpp_generic_lambdas=201304
+-sd __cpp_inheriting_constructors=200802
+-sd __cpp_init_captures=201304
+-sd __cpp_initializer_lists=200806
+-sd __cpp_lambdas=200907
+-sd __cpp_nsdmi=200809
+-sd __cpp_range_based_for=200907
+-sd __cpp_raw_strings=200710
+-sd __cpp_ref_qualifiers=200710
+-sd __cpp_return_type_deduction=201304
+-sd __cpp_rvalue_references=200610
+-sd __cpp_sized_deallocation=201309
+-sd __cpp_static_assert=200410
+-sd __cpp_unicode_characters=200704
+-sd __cpp_unicode_literals=200710
+-sd __cpp_user_defined_literals=200809
+-sd __cpp_variable_templates=201304
+-sd __STDCPP_THREADS__=1
+-sd __cpp_variadic_templates=200704
+
+-s int=32
+-a int=4
+-s char=8
+-a char=1
+-s short=16
+-a short=2
+-s long=32
+-a long=4
+-s longlong=64
+-a longlong=4
+-s float=32
+-a float=4
+-s double=64
+-a double=4
+-s ldouble=64
+-a ldouble=4
+-it "size_t=unsigned int"
+-it "ptrdiff_t=signed int"
+"-mrtnd 200"
+-accd-
+-aicpm+
+-atanpc-
+-atncrb-
+-audi-
+-dpft-
+-duc99dilt+
+-ifn-
+-ptp-
+-sdep-
+-sig-
+
+
+-c++03alignment-
+*-c++03auto-
+-c++03constexpr-
+-c++03decltype-
+*-c++03exceptionspecification-
+*-c++03initializer-
+*-c++03linkage-
+-c++03nomove-
+-c++03nostaticassert-
+-c++03nounicodechartypes-
+*-c++03nouserdefinedliterals-
+-c++03nullptr-
+-c++03plainolddata-
+-c++11autodeduction+
+-c++11nodigitseparators-
+*-c++11nosizeddeallocation-
+*-c++14trigraphs-
+
+-ppl+
+-ppf+
+
+* avoid alignas and asm parse error
+-sd "_XKEYCHECK_H=1"
+-sd "alignas(x)="
+-sd "__func__=_PRL_STRINGIFY(__func__)"
+-sd "asm=_ignore_semi"
+-sd "__asm=_ignore_semi"
+-sd "__asm__=_ignore_semi"
+-sd "__INTADDR__(A)=((unsigned int)(A))"
+-sd "_PRL_STRINGIFY(x)=#x"
+-sd "__attribute__=_ignore_paren"
+-sd "__const__=const"
+-sd "__inline=inline"
+-sd "__inline__=inline"
+-sd "__noinline="
+-sd "__interrupt="
+-sd "__ghs_c_int__=int"
+
+*-sd "__va_align=1 prl_ignore_paren"
+*-sd "__va_float=1 prl_ignore_paren"
+*-sd "__va_long=1 prl_ignore_paren"
+*-sd "__va_pointer=1 prl_ignore_paren"
+*-sd "__va_regtyp=1 prl_ignore_paren"
+*-sd "__va_vector=1 prl_ignore_paren"
+*-sd "_prl_null_expression=0 prl_ignore_paren"
+-sd "__fp16=float"
+*-sd __generic=
+*-sd prl_ignore_paren=_ignore_paren
+*-sd "_lint=1"

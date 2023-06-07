@@ -1,0 +1,40 @@
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets:
+        - prometheus_alerting_config-alertmanager-1:9093
+
+rule_files:
+  - rules.yaml
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+    - targets: ['localhost:9090']
+
+  - job_name: jenkins
+    metrics_path: /radar_customer_gen5/prometheus/
+    static_configs:
+    - targets: ['rb-jmaas.de.bosch.com']
+
+    scrape_interval: 10m
+    scrape_timeout: 2m
+
+    tls_config:
+      insecure_skip_verify: true
+  
+  - job_name: failed_builds_stats
+    metrics_path: /influxdb_metrics
+    static_configs:
+    - targets: ['metrics2prometheus:5000']
+
+    scrape_interval: 10m
+    scrape_timeout: 2m
+  
+  - job_name: loki
+    metrics_path: /metrics
+    static_configs:
+    - targets: ['abts55144.de.bosch.com:3100']
+
+    scrape_interval: 2m
+    scrape_timeout: 1m

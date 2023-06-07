@@ -1,0 +1,76 @@
+####################################
+# CCDA C++ Naming Rules v1.0
+####################################
+
+
+####################################
+# NAMECPP 4.1
+# enum starts with E
+rule={'space':'TG', 'type':'e::', 'pattern':'^E[A-Z][A-Z,a-z,0-9]+$','message':4801}
+
+# class starts with C
+rule={'space':'TG', 'type':'c::', 'flag':'D', 'pattern':'^C[A-Z][A-Z,a-z,0-9]+$','message':4801}
+rule={'space':'TG', 'type':'s::', 'flag':'D', 'pattern':'^C[A-Z][A-Z,a-z,0-9]+$','message':4801}
+
+# class template starts with T
+# clarification with support; Workaround:
+rule={'def':'DC','type':'c::.+@ClassTempParam','pattern':'^T[A-Z][A-Z,a-z,0-9]+$','message':4801}
+
+# union starts with U
+rule={'space':'TG', 'type':'u::', 'pattern':'^U[A-Z][A-Z,a-z,0-9]+$','message':4801}
+
+
+####################################
+# NAMECPP 4.2
+# functions are camelCase
+rule={'space':'OF', 'pattern':'^[a-z][A-Z,a-z,0-9]+$','message':4802}
+
+
+####################################
+# NAMECPP 4.5
+# MACROS are UPPERCASE
+rule={'space':'OM', 'pattern':'[A-Z,0-9,_]+$','message':4803}
+
+####################################
+# NAMECPP 4.6
+# namespace scope variables should start with g_ (deprecated)
+#rule={'space':'OV', 'scope':'F,S', 'pattern':'^g_[A-Z,a-z,0-9]+$'}
+
+# identifiers for symbolic constants begin with k_ (but not in class scope)
+rule={'space':'OV', 'scope':'F,S,B', 'type':'=', 'linkage':'I,X', 'pattern':'^k_[A-Z,a-z,0-9]+$', 'message':4804}
+
+# static duration variables should start with s_ (but not in class scope)
+rule={'space':'OV', 'scope':'F,B,S', 'type':'^[^=]', 'linkage':'I,X', 'pattern':'^s_[A-Z,a-z,0-9,_]+$', 'message':4804}
+
+# class member scope variables should start with m_
+rule={'space':'OV', 'scope':'C', 'pattern':'^m_[A-Z,a-z,0-9,_]+$','message':4804}
+
+# function arguments must begin with f_
+rule={'space':'OV', 'scope':'B', 'linkage':'N', 'flag':'R', 'pattern':'^f_[A-Z,a-z,0-9]+(_p)?$','message':4804}
+
+# optional only, not enforced: block scope variables must begin with l_
+# rule={'space':'OV', 'scope':'B', 'linkage':'N', 'flag':'-', 'pattern':'^l_[A-Z,a-z,0-9]+$','message':4804}
+
+# pointer must have _p suffix
+rule={'space':'OV','type':'=?p=?', 'pattern':'^([sgmlfk]_)?[A-Za-z0-9]+_p$','message':4804}
+
+####################################
+# NAMECPP 4.7
+# enum member naming: c++03 capital size (separated by underscore optional) ; c++11 camelCase
+rule={'space':'OE', 'pattern':'^[A-Z,0-9]+(_[A-Z,0-9]*)*$|^[a-z][A-Z,a-z,0-9]','message':4805}
+
+
+####################################
+# NAMECPP 4.8
+# template parameter naming: type parameters end with xxxType, value parameters end with xxValue; C++11 parameter packs use the plural form xxxTypes, xxxValues
+# NO rule yet
+
+
+####################################
+# HELPER
+// all pointers
+#rule={'space':'OV', 'type':'=?p=?', 'message':4804}
+// all constants
+#rule={'space':'OV', 'type':'=', 'message':4804}
+// all static durations
+#rule={'space':'OV', 'scope':'F,B,S', 'type':'^[^=]', 'linkage':'I,X', 'message':4805}
